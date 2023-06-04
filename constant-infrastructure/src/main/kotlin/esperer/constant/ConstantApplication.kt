@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class ConstantApplication
 
 fun main(args: Array<String>) {
-	runApplication<ConstantApplication>(*args)
+    runApplication<ConstantApplication>(*args)
 }
