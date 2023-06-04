@@ -1,11 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.1.0"
-	id("io.spring.dependency-management") version "1.1.0"
-	kotlin("jvm") version "1.8.21"
-	kotlin("plugin.spring") version "1.8.21"
-	kotlin("plugin.jpa") version "1.8.21"
+	id("org.springframework.boot") version PluginVersions.SPRING_BOOT
+	id("io.spring.dependency-management") version PluginVersions.SPRING_DEPENDENCY_MANAGE
+	kotlin("jvm") version PluginVersions.JPA
+	kotlin("plugin.spring") version PluginVersions.SPRING_PLUGIN
+	kotlin("plugin.jpa") version PluginVersions.JPA
+	kotlin("kapt") version PluginVersions.KAPT
 }
 
 group = "esperer"
