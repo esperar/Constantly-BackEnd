@@ -1,40 +1,88 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-	id("org.springframework.boot") version PluginVersions.SPRING_BOOT
-	id("io.spring.dependency-management") version PluginVersions.SPRING_DEPENDENCY_MANAGE
-	kotlin("jvm") version PluginVersions.JPA
-	kotlin("plugin.spring") version PluginVersions.SPRING_PLUGIN
-	kotlin("plugin.jpa") version PluginVersions.JPA
-	kotlin("kapt") version PluginVersions.KAPT
+	kotlin("jvm") version PluginVersions.JVM
 }
 
-group = "esperer"
-version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+subprojects {
+	apply {
+		plugin("org.jetbrains.kotlin.jvm")
+		version = PluginVersions.JVM
+	}
 
-repositories {
-	mavenCentral()
+	apply {
+		plugin("org.jetbrains.kotlin.kapt")
+		version = PluginVersions.KAPT
+	}
+
+	dependencies {
+		implementation(Dependencies.KOTLIN_REFLECT)
+		implementation(Dependencies.KOTLIN_STDLIB)
+	}
 }
+
+allprojects {
+	group = "esperer"
+	version = "0.0.1-SNAPSHOT"
+
+	tasks {
+		compileKotlin {
+			kotlinOptions {
+				freeCompilerArgs = listOf("-Xjsr305=strict")
+				jvmTarget = "17"
+			}
+		}
+
+		compileJava {
+			sourceCompatibility = JavaVersion.VERSION_17.majorVersion
+		}
+
+		test {
+			useJUnitPlatform()
+		}
+	}
+
+	repositories {
+		mavenCentral()
+	}
+}
+
+val ktlint: Configuration by configurations.creating
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	runtimeOnly("com.mysql:mysql-connector-j")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test")
+	ktlint(Dependencies.KTLINT) {
+		attributes {
+			attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling.EXTERNAL))
+		}
+	}
 }
 
-tasks.withType<KotlinCompile> {
+val outputDir = "${project.buildDir}/reports/ktlint/"
+val inputFiles = project.fileTree(mapOf("dir" to "src", "include" to "**/*.kt"))
+
+val ktlintCheck by tasks.creating(JavaExec::class) {
+	inputs.files(inputFiles)
+	outputs.dir(outputDir)
+
+	description = "Check Kotlin code style."
+	classpath = ktlint
+	mainClass.set("com.pinterest.ktlint.Main")
+	args = listOf("**/*.kt", "**/*.kts")
+}
+
+// Formatting all source files
+val ktlintFormat by tasks.creating(JavaExec::class) {
+	inputs.files(inputFiles)
+	outputs.dir(outputDir)
+
+	description = "Fix Kotlin code style deviations."
+	classpath = ktlint
+	mainClass.set("com.pinterest.ktlint.Main")
+	args = listOf("-F", "**/*.kt")
+	jvmArgs("--add-opens", "java.base/java.lang=ALL-UNNAMED")
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "17"
 	}
-}
-
-tasks.withType<Test> {
-	useJUnitPlatform()
 }
