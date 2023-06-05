@@ -13,7 +13,7 @@ dependencies {
     runtimeOnly(Dependencies.MYSQL)
     implementation(Dependencies.KOTLIN_JACKSON)
     implementation(Dependencies.SENTRY)
-
+    implementation(Dependencies.SPRING_REDIS)
     kapt(Dependencies.CONFIGURATION_PROCESSOR)
 
     implementation(Dependencies.JWT_API)

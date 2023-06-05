@@ -4,6 +4,7 @@ object Dependencies {
     const val SPRING_WEB = "org.springframework.boot:spring-boot-starter-web"
     const val KOTLIN_JACKSON = "com.fasterxml.jackson.module:jackson-module-kotlin"
     const val KOTLIN_REFLECT = "org.jetbrains.kotlin:kotlin-reflect"
+    const val SPRING_REDIS = "org.springframework.boot:spring-boot-starter-data-redis"
     const val MYSQL = "com.mysql:mysql-connector-j"
     const val SPRING_STARTER_TEST = "org.springframework.boot:spring-boot-starter-test"
     const val SPRING_SECURITY_TEST = "org.springframework.security:spring-security-test"
