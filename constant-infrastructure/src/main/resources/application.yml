@@ -23,3 +23,8 @@ spring:
   sql:
     init:
       mode: always
+
+secret:
+  secretKey: qwertyuiolkjhgfdsazxcvbnmpoiuytrewqasdfghjklmnbvcxzqwertyuioplkjhgfdsazxcvbn
+  accessExp: 1800
+  refreshExp: 108000

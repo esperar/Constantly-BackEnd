@@ -11,4 +11,5 @@ object Dependencies {
     const val KTLINT = "com.pinterest:ktlint:${DependencyVersions.KTLINT_VERSION}"
     const val VALIDATION = "org.springframework.boot:spring-boot-starter-validation"
     const val SENTRY = "io.sentry:sentry-spring-boot-starter:${DependencyVersions.SENTRY_VERSION}"
+    const val CONFIGURATION_PROCESSOR = "org.springframework.boot:spring-boot-configuration-processor"
 }

@@ -14,12 +14,23 @@ dependencies {
     implementation(Dependencies.KOTLIN_JACKSON)
     implementation(Dependencies.SENTRY)
 
+    kapt(Dependencies.CONFIGURATION_PROCESSOR)
+
     implementation(project(":constant-application"))
+}
+
+kapt {
+    arguments {
+        arg("mapstruct.defaultComponentModel", "spring")
+        arg("mapstruct.unmappedTargetPolicy", "ignore")
+    }
 }
 
 tasks.getByName<Jar>("jar") {
     enabled = false
 }
+
+
 
 allOpen {
     annotation("javax.persistence.Entity")
