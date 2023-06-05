@@ -37,7 +37,7 @@ jobs:
 
       - name: Create application.yml
         run: |
-          echo "${{ secrets.CONSTANT_ENV }}" > ./src/main/resources/application.yml
+          echo "${{ secrets.CONSTANT_ENV }}" > ./constant-infrastructure/src/main/resources/application.yml
         shell: bash
 
       - name: Run build with Gradle wrapper
