@@ -12,6 +12,7 @@ dependencies {
     implementation(Dependencies.SPRING_STARTER_JPA)
     runtimeOnly(Dependencies.MYSQL)
     implementation(Dependencies.KOTLIN_JACKSON)
+    implementation(Dependencies.SENTRY)
 
     implementation(project(":constant-application"))
 }

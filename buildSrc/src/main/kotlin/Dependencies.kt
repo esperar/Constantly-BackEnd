@@ -10,5 +10,5 @@ object Dependencies {
     const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     const val KTLINT = "com.pinterest:ktlint:${DependencyVersions.KTLINT_VERSION}"
     const val VALIDATION = "org.springframework.boot:spring-boot-starter-validation"
-
+    const val SENTRY = "io.sentry:sentry-spring-boot-starter:${DependencyVersions.SENTRY_VERSION}"
 }
