@@ -1,4 +1,4 @@
-package esperer.constant.domain.auth.persistence
+package esperer.constant.domain.auth.persistence.entity
 
 import esperer.constant.domain.auth.model.Authority
 import org.springframework.data.annotation.Id
@@ -17,6 +17,6 @@ data class RefreshTokenEntity(
     val authority: Authority,
 
     @TimeToLive
-    val expirationTime: Int
+    val expiredAt: Int
 
 )
