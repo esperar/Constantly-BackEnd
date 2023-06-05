@@ -16,6 +16,10 @@ dependencies {
 
     kapt(Dependencies.CONFIGURATION_PROCESSOR)
 
+    implementation(Dependencies.JWT_API)
+    runtimeOnly(Dependencies.JWT_IMPL)
+    runtimeOnly(Dependencies.JWT_JACKSON)
+
     implementation(project(":constant-application"))
 }
 
