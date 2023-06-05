@@ -1,4 +1,4 @@
-name: CONSTANT_BACKEND _CI
+name: CONSTANT_BACKEND_CI
 
 on:  
   push:
