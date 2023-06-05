@@ -5,7 +5,6 @@ import esperer.constant.global.filter.FilterConfig
 import esperer.constant.global.security.handler.CustomAccessDenied
 import esperer.constant.global.security.handler.CustomAuthenticationEntryPoint
 import esperer.constant.global.security.token.JwtParser
-import esperer.constant.global.security.token.JwtProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
