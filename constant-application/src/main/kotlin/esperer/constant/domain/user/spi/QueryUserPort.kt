@@ -1,4 +1,4 @@
-package esperer.constant.domain.user.port
+package esperer.constant.domain.user.spi
 
 import esperer.constant.domain.user.model.User
 import java.util.*
