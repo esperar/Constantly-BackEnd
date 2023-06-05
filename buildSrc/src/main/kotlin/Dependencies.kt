@@ -4,6 +4,7 @@ object Dependencies {
     const val SPRING_WEB = "org.springframework.boot:spring-boot-starter-web"
     const val KOTLIN_JACKSON = "com.fasterxml.jackson.module:jackson-module-kotlin"
     const val KOTLIN_REFLECT = "org.jetbrains.kotlin:kotlin-reflect"
+    const val SPRING_REDIS = "org.springframework.boot:spring-boot-starter-data-redis"
     const val MYSQL = "com.mysql:mysql-connector-j"
     const val SPRING_STARTER_TEST = "org.springframework.boot:spring-boot-starter-test"
     const val SPRING_SECURITY_TEST = "org.springframework.security:spring-security-test"
@@ -11,4 +12,8 @@ object Dependencies {
     const val KTLINT = "com.pinterest:ktlint:${DependencyVersions.KTLINT_VERSION}"
     const val VALIDATION = "org.springframework.boot:spring-boot-starter-validation"
     const val SENTRY = "io.sentry:sentry-spring-boot-starter:${DependencyVersions.SENTRY_VERSION}"
+    const val CONFIGURATION_PROCESSOR = "org.springframework.boot:spring-boot-configuration-processor"
+    const val JWT_API = "io.jsonwebtoken:jjwt-api:${DependencyVersions.JWT_API_VERSION}"
+    const val JWT_IMPL = "io.jsonwebtoken:jjwt-impl:${DependencyVersions.JWT_IMPL_VERSION}"
+    const val JWT_JACKSON= "io.jsonwebtoken:jjwt-jackson:${DependencyVersions.JWT_JACKSON_VERSION}"
 }
