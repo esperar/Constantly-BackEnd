@@ -15,6 +15,9 @@ class QueryUserService(
     fun queryUserById(id: UUID) =
         queryUserPort.queryUserById(id) ?: throw UserNotFoundException
 
+    fun queryUserByEmail(email: String) =
+        queryUserPort.queryUserByEmail(email) ?: throw UserNotFoundException
+
     fun getCurrentUser() =
         queryUserById(securityService.getCurrentUserId())
 }
