@@ -1,6 +1,7 @@
 package esperer.constant.domain.auth.usecase
 
 import esperer.constant.common.annotation.UseCase
+import esperer.constant.common.service.SecurityService
 import esperer.constant.common.spi.SecurityPort
 import esperer.constant.domain.auth.dto.request.SignUpRequest
 import esperer.constant.domain.auth.model.Authority
@@ -11,7 +12,7 @@ import java.util.*
 @UseCase
 class SignUpUseCase(
     private val commandUserPort: CommandUserPort,
-    private val securityPort: SecurityPort
+    private val securityService: SecurityService
 ) {
 
     fun execute(request: SignUpRequest){
@@ -19,7 +20,7 @@ class SignUpUseCase(
         val user = User(
             id = UUID.randomUUID(),
             email = request.email,
-            password = securityPort.encodePassword(request.password),
+            password = securityService.encodePassword(request.password),
             name = request.name,
             profileFileName = request.profileFileName ?: "",
             authority = Authority.ROLE_USER
