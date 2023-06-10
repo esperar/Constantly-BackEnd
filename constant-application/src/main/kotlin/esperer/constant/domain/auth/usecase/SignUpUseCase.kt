@@ -2,7 +2,6 @@ package esperer.constant.domain.auth.usecase
 
 import esperer.constant.common.annotation.UseCase
 import esperer.constant.common.service.SecurityService
-import esperer.constant.common.spi.SecurityPort
 import esperer.constant.domain.auth.dto.request.SignUpRequest
 import esperer.constant.domain.auth.model.Authority
 import esperer.constant.domain.user.model.User

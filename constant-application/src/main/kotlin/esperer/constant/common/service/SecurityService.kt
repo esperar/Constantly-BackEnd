@@ -1,8 +1,10 @@
 package esperer.constant.common.service
 
+import esperer.constant.common.annotation.Service
 import esperer.constant.common.spi.SecurityPort
 import java.util.*
 
+@Service
 class SecurityService(
     private val securityPort: SecurityPort
 ) {
