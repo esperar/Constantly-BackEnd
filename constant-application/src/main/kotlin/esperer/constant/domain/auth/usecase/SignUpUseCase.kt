@@ -22,7 +22,8 @@ class SignUpUseCase(
             password = securityService.encodePassword(request.password),
             name = request.name,
             profileFileName = request.profileFileName ?: "",
-            authority = Authority.ROLE_USER
+            authority = Authority.ROLE_USER,
+            sprintId = null
         )
 
         commandUserPort.save(user)
