@@ -1,6 +1,7 @@
 package esperer.constant.domain.user.persistence.entity
 
 import esperer.constant.domain.auth.model.Authority
+import esperer.constant.domain.sprint.persistence.entity.SprintJpaEntity
 import esperer.constant.global.entity.BaseUUIDEntity
 import jakarta.persistence.*
 import java.util.*
@@ -25,7 +26,11 @@ class UserJpaEntity(
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(7)", nullable = false)
-    val authority: Authority
+    val authority: Authority,
+
+    @ManyToOne
+    @JoinColumn(name = "sprint_id", nullable = true)
+    val sprint: SprintJpaEntity? = null
 
 
 ) : BaseUUIDEntity(id)
