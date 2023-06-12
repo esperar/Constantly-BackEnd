@@ -31,6 +31,6 @@ class CreateSprintUseCase(
             )
         )
 
-        commandUserService.save(user.copy(sprint = sprint))
+        commandUserService.save(user.copy(sprintId = sprint.id))
     }
 }
