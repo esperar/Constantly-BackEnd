@@ -33,6 +33,10 @@ class SecurityConfig(
         http
             .authorizeRequests()
             .requestMatchers(HttpMethod.GET, "/").permitAll()
+            .requestMatchers(HttpMethod.POST, "/auth/signup").permitAll()
+            .requestMatchers(HttpMethod.POST,"/auth/token").permitAll()
+
+            .requestMatchers(HttpMethod.POST, "/sprint").hasRole("USER")
             .anyRequest().denyAll()
 
         http.apply(FilterConfig(jwtParser, objectMapper))
