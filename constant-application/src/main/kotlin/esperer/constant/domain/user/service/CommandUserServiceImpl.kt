@@ -7,8 +7,8 @@ import esperer.constant.domain.user.spi.CommandUserPort
 @Service
 class CommandUserServiceImpl(
     private val commandUserPort: CommandUserPort
-) {
+) : CommandUserService {
 
-    fun save(user: User): User =
+    override fun save(user: User): User =
         commandUserPort.save(user)
 }
