@@ -5,12 +5,13 @@ import esperer.constant.common.service.SecurityService
 import esperer.constant.domain.auth.dto.request.SignUpRequest
 import esperer.constant.domain.auth.model.Authority
 import esperer.constant.domain.user.model.User
+import esperer.constant.domain.user.service.UserService
 import esperer.constant.domain.user.spi.CommandUserPort
 import java.util.*
 
 @UseCase
 class SignUpUseCase(
-    private val commandUserPort: CommandUserPort,
+    private val userService: UserService,
     private val securityService: SecurityService
 ) {
 
@@ -26,6 +27,6 @@ class SignUpUseCase(
             sprintId = null
         )
 
-        commandUserPort.save(user)
+        userService.save(user)
     }
 }
