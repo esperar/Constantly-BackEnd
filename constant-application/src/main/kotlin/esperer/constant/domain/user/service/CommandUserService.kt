@@ -1,14 +1,7 @@
 package esperer.constant.domain.user.service
 
-import esperer.constant.common.annotation.Service
 import esperer.constant.domain.user.model.User
-import esperer.constant.domain.user.spi.CommandUserPort
 
-@Service
-class CommandUserService(
-    private val commandUserPort: CommandUserPort
-) {
-
-    fun save(user: User): User =
-        commandUserPort.save(user)
+interface CommandUserService {
+    fun save(user: User): User
 }
