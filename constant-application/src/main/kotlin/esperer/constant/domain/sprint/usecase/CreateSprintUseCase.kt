@@ -4,23 +4,24 @@ import esperer.constant.common.annotation.UseCase
 import esperer.constant.domain.sprint.dto.request.CreateSprintRequest
 import esperer.constant.domain.sprint.model.Sprint
 import esperer.constant.domain.sprint.model.SprintStatus
-import esperer.constant.domain.sprint.service.CommandSprintService
-import esperer.constant.domain.user.service.CommandUserService
-import esperer.constant.domain.user.service.QueryUserService
+import esperer.constant.domain.sprint.service.CommandSprintServiceImpl
+import esperer.constant.domain.sprint.service.SprintService
+import esperer.constant.domain.user.service.CommandUserServiceImpl
+import esperer.constant.domain.user.service.QueryUserServiceImpl
+import esperer.constant.domain.user.service.UserService
 import java.util.*
 
 @UseCase
 class CreateSprintUseCase(
-    private val commandSprintService: CommandSprintService,
-    private val queryUserService: QueryUserService,
-    private val commandUserService: CommandUserService
+    private val userService: UserService,
+    private val sprintService: SprintService
 ) {
 
     fun execute(request: CreateSprintRequest){
 
-        val user = queryUserService.getCurrentUser()
+        val user = userService.getCurrentUser()
 
-        val sprint = commandSprintService.save(
+        val sprint = sprintService.save(
             Sprint(
                 id = UUID.randomUUID(),
                 title = request.title,
@@ -31,6 +32,6 @@ class CreateSprintUseCase(
             )
         )
 
-        commandUserService.save(user.copy(sprintId = sprint.id))
+        userService.save(user.copy(sprintId = sprint.id))
     }
 }
