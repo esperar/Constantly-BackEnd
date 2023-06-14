@@ -18,6 +18,8 @@ class SprintPersistenceAdapter(
     override fun querySprintById(id: UUID): Sprint? =
         sprintMapper.toDomain(sprintRepository.findByIdOrNull(id))
 
+    override fun queryAllSprint(): List<Sprint> =
+        sprintRepository.findAll().map { sprintMapper.toDomain(it)!! }
 
     override fun save(sprint: Sprint): Sprint =
         sprintMapper.toDomain(sprintRepository.save(sprintMapper.toEntity(sprint)))!!

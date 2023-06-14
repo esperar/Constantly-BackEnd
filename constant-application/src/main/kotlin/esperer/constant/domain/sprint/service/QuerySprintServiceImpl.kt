@@ -13,4 +13,8 @@ class QuerySprintServiceImpl(
 
     override fun querySprintById(id: UUID): Sprint =
         querySprintPort.querySprintById(id) ?: throw SprintNotFoundException
+
+    override fun queryAllSprint(): List<Sprint> =
+        querySprintPort.queryAllSprint()
+
 }

@@ -6,4 +6,5 @@ import java.util.UUID
 interface QuerySprintPort {
 
     fun querySprintById(id: UUID): Sprint?
+    fun queryAllSprint(): List<Sprint>
 }
