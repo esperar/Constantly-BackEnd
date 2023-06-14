@@ -5,4 +5,5 @@ import java.util.UUID
 
 interface QuerySprintService {
     fun querySprintById(id: UUID): Sprint
+    fun queryAllSprint(): List<Sprint>
 }
