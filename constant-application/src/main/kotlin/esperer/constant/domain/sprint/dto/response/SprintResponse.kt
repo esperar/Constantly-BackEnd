@@ -1,6 +1,7 @@
-package esperer.constant.domain.sprint.presentation.dto.response
+package esperer.constant.domain.sprint.dto.response
 
 import esperer.constant.domain.sprint.model.Sprint
+import esperer.constant.domain.user.dto.response.UserResponse
 import esperer.constant.domain.user.model.User
 import java.time.LocalDateTime
 import java.util.*
@@ -11,10 +12,10 @@ data class SprintResponse(
     val target: String? = null,
     val startDate: LocalDateTime,
     val endDate: LocalDateTime,
-    val user: User? = null
+    val user: UserResponse? = null
 ) {
     companion object {
-        fun of(sprint: Sprint): SprintResponse{
+        fun of(sprint: Sprint): SprintResponse {
             return SprintResponse(
                 id = sprint.id,
                 title = sprint.title,
@@ -23,14 +24,14 @@ data class SprintResponse(
             )
         }
 
-        fun detailOf(sprint: Sprint, user: User): SprintResponse{
+        fun detailOf(sprint: Sprint, user: User): SprintResponse {
             return SprintResponse(
                 id = sprint.id,
                 title = sprint.title,
                 target = sprint.target,
                 startDate = sprint.startDate,
                 endDate = sprint.endDate,
-                user = user
+                user = UserResponse.of(user)
             )
         }
     }
