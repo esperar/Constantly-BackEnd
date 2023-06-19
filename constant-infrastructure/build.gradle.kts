@@ -20,8 +20,7 @@ dependencies {
     runtimeOnly(Dependencies.JWT_IMPL)
     runtimeOnly(Dependencies.JWT_JACKSON)
 
-    testImplementation(Dependencies.SPRING_TEST)
-    testImplementation(Dependencies.MOCKITO_KOTLIN)
+
 
     implementation(project(":constant-application"))
 }
