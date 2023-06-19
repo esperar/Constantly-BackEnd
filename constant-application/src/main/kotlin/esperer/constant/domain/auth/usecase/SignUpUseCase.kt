@@ -4,6 +4,7 @@ import esperer.constant.common.annotation.UseCase
 import esperer.constant.common.service.SecurityService
 import esperer.constant.domain.auth.dto.request.SignUpRequest
 import esperer.constant.domain.auth.model.Authority
+import esperer.constant.domain.user.exception.EmailAlreadyExistsException
 import esperer.constant.domain.user.model.User
 import esperer.constant.domain.user.service.UserService
 import java.util.*
@@ -15,6 +16,9 @@ class SignUpUseCase(
 ) {
 
     fun execute(request: SignUpRequest){
+
+        if(userService.existsByEmail(request.email))
+            throw EmailAlreadyExistsException
 
         val user = User(
             id = UUID.randomUUID(),
