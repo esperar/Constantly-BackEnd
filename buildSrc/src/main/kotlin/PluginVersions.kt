@@ -6,4 +6,5 @@ object PluginVersions {
     const val JPA = "1.8.21"
     const val KAPT = "1.8.21"
     const val ALLOPEN_VERSION = "1.6.21"
+    const val MOCKITO_KOTLIN_VERSION = "4.0.0"
 }
