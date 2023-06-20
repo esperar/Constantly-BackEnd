@@ -28,4 +28,7 @@ class UserPersistenceAdapter(
 
     override fun save(user: User): User =
         userMapper.toDomain(userRepository.save(userMapper.toEntity(user)))!!
+
+    override fun existsByEmail(email: String): Boolean =
+        userRepository.existsByEmail(email)
 }

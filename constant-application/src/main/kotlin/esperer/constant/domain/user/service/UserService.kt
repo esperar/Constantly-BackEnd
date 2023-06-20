@@ -5,6 +5,8 @@ import esperer.constant.common.annotation.Service
 @Service
 class UserService(
     commandUserService: CommandUserService,
-    queryUserService: QueryUserService
+    queryUserService: QueryUserService,
+    checkUserService: CheckUserService
 ) : CommandUserService by commandUserService,
-    QueryUserService by queryUserService
+    QueryUserService by queryUserService,
+    CheckUserService by checkUserService

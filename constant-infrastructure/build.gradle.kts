@@ -20,6 +20,8 @@ dependencies {
     runtimeOnly(Dependencies.JWT_IMPL)
     runtimeOnly(Dependencies.JWT_JACKSON)
 
+
+
     implementation(project(":constant-application"))
 }
 

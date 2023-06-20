@@ -23,8 +23,8 @@ class AuthWebAdapter(
 ) {
 
     @PostMapping("/signup")
-    fun signUp(@RequestBody @Valid request: SignUpWebRequest){
-        signUpUseCase.execute(
+    fun signUp(@RequestBody @Valid request: SignUpWebRequest): TokenResponse {
+        return signUpUseCase.execute(
             SignUpRequest(
                 email = request.email,
                 password = request.password,

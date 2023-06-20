@@ -16,6 +16,9 @@ subprojects {
 	dependencies {
 		implementation(Dependencies.KOTLIN_REFLECT)
 		implementation(Dependencies.KOTLIN_STDLIB)
+
+		testImplementation(Dependencies.SPRING_TEST)
+		testImplementation(Dependencies.MOCKITO_KOTLIN)
 	}
 }
 

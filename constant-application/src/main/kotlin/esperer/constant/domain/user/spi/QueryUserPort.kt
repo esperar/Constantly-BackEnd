@@ -7,6 +7,5 @@ import java.util.*
 interface QueryUserPort {
     fun queryUserById(id: UUID): User?
     fun queryUserByEmail(email: String): User?
-
     fun queryAllUserBySprint(sprint: Sprint): List<User>
 }
