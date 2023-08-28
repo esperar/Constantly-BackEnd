@@ -9,7 +9,7 @@ import esperer.constant.domain.chat.usecase.QueryChatRoomByIdUseCase
 import org.springframework.messaging.handler.annotation.DestinationVariable
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.messaging.handler.annotation.SendTo
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.util.UUID
 
 @RestController
@@ -30,5 +30,20 @@ class ChatRoomWebAdapter(
             message = request.message,
             sender = request.sender
         )
+    }
+
+    @PostMapping("/api/v1/chat/room")
+    fun createRoom(@RequestParam name: String): ChatRoomDto {
+        return createChatRoomUseCase.execute(name)
+    }
+
+    @GetMapping("/api/v1/chat/room/{room_id}")
+    fun queryChatRoomById(@PathVariable("room_id") id: UUID): ChatRoomDto {
+        return queryChatRoomByIdUseCase.execute(id)
+    }
+
+    @GetMapping("/api/v1/chat/room")
+    fun queryAllChatRoom(): List<ChatRoomDto> {
+        return queryAllChatRoomUseCase.execute()
     }
 }
