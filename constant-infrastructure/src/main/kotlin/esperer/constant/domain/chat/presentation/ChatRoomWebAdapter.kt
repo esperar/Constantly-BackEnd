@@ -6,6 +6,7 @@ import esperer.constant.domain.chat.presentation.data.request.ChatRequest
 import esperer.constant.domain.chat.usecase.CreateChatRoomUseCase
 import esperer.constant.domain.chat.usecase.QueryAllChatRoomUseCase
 import esperer.constant.domain.chat.usecase.QueryChatRoomByIdUseCase
+import esperer.constant.domain.chat.usecase.SendChatUseCase
 import org.springframework.messaging.handler.annotation.DestinationVariable
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.messaging.handler.annotation.SendTo
@@ -16,20 +17,23 @@ import java.util.UUID
 class ChatRoomWebAdapter(
     private val createChatRoomUseCase: CreateChatRoomUseCase,
     private val queryChatRoomByIdUseCase: QueryChatRoomByIdUseCase,
-    private val queryAllChatRoomUseCase: QueryAllChatRoomUseCase
+    private val queryAllChatRoomUseCase: QueryAllChatRoomUseCase,
+    private val sendChatUseCase: SendChatUseCase
 ) {
 
     @MessageMapping("/pub/chat/room/{room_id}")
     @SendTo("/sub/chat/room/{room_id}")
     fun message(@DestinationVariable("room_id") roomId: UUID, request: ChatRequest) : ChatDto {
 
-        // 채팅 기록 저장 로직
-
-        return ChatDto(
+        val chatDto = ChatDto(
             type = request.type,
             message = request.message,
             sender = request.sender
         )
+
+        sendChatUseCase.execute(roomId, chatDto)
+
+        return chatDto
     }
 
     @PostMapping("/api/v1/chat/room")
