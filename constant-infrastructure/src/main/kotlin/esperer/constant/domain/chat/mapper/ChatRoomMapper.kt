@@ -16,7 +16,6 @@ class ChatRoomMapper : GenericMapper<ChatRoom, ChatRoomRedisEntity> {
             )
         }
 
-
     override fun toEntity(domain: ChatRoom): ChatRoomRedisEntity =
         ChatRoomRedisEntity(
             id = domain.id,
