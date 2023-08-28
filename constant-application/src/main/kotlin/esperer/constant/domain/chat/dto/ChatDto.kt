@@ -1,6 +1,7 @@
 package esperer.constant.domain.chat.dto
 
 import esperer.constant.domain.chat.model.ChatRoom
+import esperer.constant.domain.chat.model.Type
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.util.UUID
@@ -13,9 +14,6 @@ data class ChatDto(
 
     val createdAt: Long = LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli()
 
-    enum class Type {
-        ENTER, COMMENT
-    }
 }
 
 data class ChatRoomDto(
